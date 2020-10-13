@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "356895521158",
+    "firebase_url": "https://jasin-smart.firebaseio.com",
+    "project_id": "jasin-smart",
+    "storage_bucket": "jasin-smart.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:356895521158:android:4e2d5b62abe804ff999407",
+        "android_client_info": {
+          "package_name": "com.example.smart_library"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "356895521158-n1ndc4a283t4iohapj16ukfut0vri98e.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyA70_RopTLp0XW2HLjKlHL4jqe3V1Wd5_M"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "356895521158-n1ndc4a283t4iohapj16ukfut0vri98e.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
