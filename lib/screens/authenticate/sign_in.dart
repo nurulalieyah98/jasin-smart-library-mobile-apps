@@ -131,17 +131,6 @@ class _SignInState extends State<SignIn> {
                       ),
                       onPressed: () async {
                         await _auth.resetPassword(email);
-                        // AlertDialog(
-                        //   title: Text("Reset Password?"),
-                        //   actions: [
-                        //     FlatButton(
-                        //       child: Text("Yes"),
-                        //       onPressed: () async {
-                        //         await _auth.resetPassword(email);
-                        //       },
-                        //     ),
-                        //   ],
-                        // );
                       },
                     ),
                     SizedBox(height: 12.0),
