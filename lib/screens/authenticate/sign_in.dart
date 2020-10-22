@@ -110,17 +110,11 @@ class _SignInState extends State<SignIn> {
                             setState(() => loading = true);
                             dynamic result = await _auth
                                 .signInWithEmailAndPassword(email, password);
-                            AlertDialog(
-                              title: new Text("Success! Welcome Back!"),
-                            );
                             if (result == null) {
                               setState(() {
                                 error =
                                     'could not sign in with those credentials @ wrong email/password';
                                 loading = false;
-                                AlertDialog(
-                                  title: new Text("Error! Try Again!"),
-                                );
                               });
                             }
                           }
