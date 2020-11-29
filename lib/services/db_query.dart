@@ -1,7 +1,6 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:smart_library/models/books.dart';
 import 'package:smart_library/models/beacons.dart';
-import 'package:smart_library/screens/book/book_detail.dart';
 
 class DBQuery {
   final String uid;
@@ -14,28 +13,28 @@ class DBQuery {
   final CollectionReference _beaconsCollection =
       FirebaseFirestore.instance.collection('beacon');
 
-  //Get All Books Data from Snapshot
-  Future<List<Books>> booksList(String id) async {
-    try {
-      final QuerySnapshot snapshot = await _booksCollection.get();
+  // //Get All Books Data from Snapshot
+  // Future<List<Books>> booksList(String uid) async {
+  //   try {
+  //     final QuerySnapshot snapshot = await _booksCollection.get();
 
-      return snapshot.docs
-          .map(
-            (e) => Books(
-              uid: e.id,
-              title: e.get('title') ?? '',
-              author: e.get('author') ?? '',
-              category: e.get('category') ?? '',
-              synopsis: e.get('synopsis') ?? '',
-              url: e.get('url') ?? '',
-              shelves: e.get('shelves') ?? '',
-            ),
-          )
-          .toList();
-    } catch (e) {
-      print(e.toString());
-    }
-  }
+  //     return snapshot.docs
+  //         .map(
+  //           (e) => Books(
+  //             uid: uid,
+  //             title: e.get('title') ?? '',
+  //             author: e.get('author') ?? '',
+  //             category: e.get('category') ?? '',
+  //             synopsis: e.get('synopsis') ?? '',
+  //             url: e.get('url') ?? '',
+  //             shelves: e.get('shelves') ?? '',
+  //           ),
+  //         )
+  //         .toList();
+  //   } catch (e) {
+  //     print(e.toString());
+  //   }
+  // }
 
   //Get One Book Data from Snapshot
   Future bookDetail(uid) async {
@@ -55,7 +54,7 @@ class DBQuery {
     }
   }
 
-  //Get Ingredients Data
+  //Get All book level 1 Data
   Future bookLevel1(String uid) async {
     try {
       QuerySnapshot snapshot = await _booksCollection
@@ -80,6 +79,7 @@ class DBQuery {
     }
   }
 
+  //Get All book level 2 Data
   Future bookLevel2(String uid) async {
     try {
       QuerySnapshot snapshot = await _booksCollection
@@ -97,6 +97,26 @@ class DBQuery {
               url: e.get('url') ?? '',
               shelves: e.get('shelves') ?? '',
             ),
+          )
+          .toList();
+    } catch (e) {
+      print(e.toString());
+    }
+  }
+
+  //Get All Books Data from Snapshot
+  Future<List<Beacons>> beaconList(String id) async {
+    try {
+      final QuerySnapshot snapshot = await _beaconsCollection.get();
+
+      return snapshot.docs
+          .map(
+            (e) => Beacons(
+                uid: e.id,
+                beaconId: e.get('beaconId') ?? '',
+                major: e.get('major') ?? '',
+                minor: e.get('minor') ?? '',
+                name: e.get('name') ?? ''),
           )
           .toList();
     } catch (e) {

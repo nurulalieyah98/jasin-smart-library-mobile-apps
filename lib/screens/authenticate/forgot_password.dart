@@ -5,12 +5,12 @@ import 'package:smart_library/shared/constants.dart';
 import 'package:smart_library/components/rounded_button.dart';
 import 'package:provider/provider.dart';
 
-class forgotPassword extends StatefulWidget {
+class ForgotPassword extends StatefulWidget {
   @override
-  _forgotPasswordState createState() => _forgotPasswordState();
+  _ForgotPasswordState createState() => _ForgotPasswordState();
 }
 
-class _forgotPasswordState extends State<forgotPassword> {
+class _ForgotPasswordState extends State<ForgotPassword> {
   final _formKey = GlobalKey<FormState>();
   final AuthService _auth = AuthService();
 

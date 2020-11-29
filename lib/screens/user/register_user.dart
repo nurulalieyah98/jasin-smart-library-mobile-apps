@@ -22,7 +22,6 @@ class _RegisterUserState extends State<RegisterUser> {
 
   @override
   Widget build(BuildContext context) {
-    //TODO: Turunkan interface
     return Scaffold(
         backgroundColor: Colors.deepPurple[100],
         body: Padding(
