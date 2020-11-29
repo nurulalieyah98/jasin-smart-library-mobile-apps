@@ -21,9 +21,9 @@ class _SignInState extends State<SignIn> {
   bool _passwordVisible;
 
   // Toggles the password show status
-  void initState() {
-    _passwordVisible = false;
-  }
+  // void initState() {
+  //   _passwordVisible = false;
+  // }
 
   //text field state
   String email = '';

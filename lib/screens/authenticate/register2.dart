@@ -3,14 +3,14 @@ import 'package:smart_library/services/auth.dart';
 import 'package:smart_library/shared/constants.dart';
 import 'package:smart_library/shared/loading.dart';
 
-class Register extends StatefulWidget {
+class Register2 extends StatefulWidget {
   final Function toggleView;
-  Register({this.toggleView});
+  Register2({this.toggleView});
   @override
-  _RegisterState createState() => _RegisterState();
+  _Register2State createState() => _Register2State();
 }
 
-class _RegisterState extends State<Register> {
+class _Register2State extends State<Register2> {
   final AuthService _auth = AuthService();
   final _formKey = GlobalKey<FormState>();
   bool loading = false;
@@ -18,10 +18,10 @@ class _RegisterState extends State<Register> {
   //text field state
   String email = '';
   String password = '';
+  String error = '';
+  String name = '';
   String id = '';
   String phone = '';
-  String name = '';
-  String error = '';
 
   // Initially password is obscure
   bool _passwordVisible = false;
@@ -64,6 +64,15 @@ class _RegisterState extends State<Register> {
                 key: _formKey,
                 child: Column(
                   children: <Widget>[
+                    SizedBox(height: 20.0),
+                    TextFormField(
+                        decoration:
+                            textInputDecoration.copyWith(hintText: 'Name'),
+                        validator: (val) =>
+                            val.isEmpty ? 'Enter an Name' : null,
+                        onChanged: (val) {
+                          setState(() => name = val);
+                        }),
                     SizedBox(height: 20.0),
                     TextFormField(
                         decoration:

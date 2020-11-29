@@ -1,51 +1,76 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:smart_library/models/users.dart';
-import 'package:smart_library/models/user.dart';
 
 class DatabaseService {
   final String uid;
   DatabaseService({this.uid});
 
   //collection reference
-  final CollectionReference userCollection =
-      Firestore.instance.collection('users');
+  final CollectionReference usersCollection =
+      FirebaseFirestore.instance.collection('users');
+
+  final CollectionReference booksRef = FirebaseFirestore.instance
+      .collection('beacons')
+      .doc('b9407f30-f5f8-466e-aff9-25556b57fe6a')
+      .collection('level 1');
+
+  final CollectionReference booksRef2 = FirebaseFirestore.instance
+      .collection('beacons')
+      .doc('b9407f30-f5f8-466e-aff9-25556b57fe6b')
+      .collection('level 2');
 
   Future updateUserData(String id, String name, String phone) async {
-    return await userCollection.document(uid).setData({
+    return await usersCollection.doc(uid).set({
       'id': id,
       'name': name,
       'phone': phone,
     });
   }
 
-  //user list from snapshot
-  List<Users> _usersListFromSnapshot(QuerySnapshot snapshot) {
-    return snapshot.documents.map((doc) {
-      return Users(
-        name: doc.data['name'] ?? '',
-        id: doc.data['id'] ?? '',
-        phone: doc.data['phone'] ?? '0',
-      );
-    }).toList();
+  //create user info
+  Future userInfo(String email, String id, String name, String phone) async {
+    return await usersCollection.doc(uid).set({
+      'email': email,
+      'id': id,
+      'name': name,
+      'phone': phone,
+    });
   }
 
+  // Future deleteuser() {
+  //   return usersCollection.doc(uid).delete();
+  // }
+
+  // //user list from snapshot
+  // List<Users> _usersListFromSnapshot(QuerySnapshot snapshot) {
+  //   return snapshot.documents.map((doc) {
+  //     return Users(
+  //       uid: uid,
+  //       name: doc.get('name') ?? '',
+  //       id: doc.get('id') ?? '',
+  //       phone: doc.get('phone') ?? '',
+  //     );
+  //   }).toList();
+  // }
+
   //userData from snapshot
-  UserData _userDataFromSnapshot(DocumentSnapshot snapshot) {
-    return UserData(
+  Users _usersDataFromSnapshot(DocumentSnapshot snapshot) {
+    return Users(
       uid: uid,
-      id: snapshot.data['id'],
-      name: snapshot.data['name'],
-      phone: snapshot.data['phone'],
+      email: snapshot.get('email') ?? '',
+      name: snapshot.get('name') ?? '',
+      id: snapshot.get('id') ?? '',
+      phone: snapshot.get('phone') ?? '',
     );
   }
 
-  //get user stream
-  Stream<List<Users>> get users {
-    return userCollection.snapshots().map(_usersListFromSnapshot);
-  }
+  // //get user stream
+  // Stream<List<Users>> get users {
+  //   return userCollection.snapshots().map(_usersListFromSnapshot);
+  // }
 
   //get user doc stream (user document)
-  Stream<UserData> get userData {
-    return userCollection.document(uid).snapshots().map(_userDataFromSnapshot);
+  Stream<Users> get userData {
+    return usersCollection.doc(uid).snapshots().map(_usersDataFromSnapshot);
   }
 }

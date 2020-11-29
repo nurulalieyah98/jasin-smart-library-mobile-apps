@@ -1,19 +1,20 @@
+import 'package:smart_library/models/users.dart';
+import 'package:smart_library/screens/home/home.dart';
+//import 'package:smart_library/screens/home/new_home.dart';
+import 'package:smart_library/screens/authenticate/login.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:smart_library/models/user.dart';
-import 'package:smart_library/screens/authenticate/authenticate.dart';
-import 'package:smart_library/screens/home/home.dart';
 
 class Wrapper extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    final user = Provider.of<User>(context);
+    final user = Provider.of<Users>(context);
 
-    //return either Home or Authenticate widget
+    //Return either the Home or Login Page
     if (user == null) {
-      return Authenticate();
+      return Login();
     } else {
-      return Home();
+      return Home(uid: user.uid);
     }
   }
 }
