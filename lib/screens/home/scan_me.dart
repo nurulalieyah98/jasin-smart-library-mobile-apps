@@ -3,8 +3,8 @@ import 'package:flutter/painting.dart';
 import 'package:flutter_bluetooth_serial/flutter_bluetooth_serial.dart';
 import 'package:permission_handler/permission_handler.dart';
 //import 'package:smart_library/screens/home/beacon2.dart';
-import 'package:smart_library/screens/home/beacon.dart';
-//import 'package:smart_library/screens/home/beacon3.dart';
+// import 'package:smart_library/screens/home/beacon.dart';
+import 'package:smart_library/screens/home/beacon3.dart';
 
 class ScanMe extends StatelessWidget {
   @override

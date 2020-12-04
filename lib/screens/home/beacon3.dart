@@ -4,24 +4,18 @@ import 'package:flutter/material.dart';
 import 'dart:async';
 import 'package:flutter/services.dart';
 import 'package:flutter_beacon/flutter_beacon.dart';
+import 'package:smart_library/models/beacons.dart';
 import 'package:smart_library/screens/authenticate/forgot_password.dart';
-import 'package:smart_library/screens/authenticate/login.dart';
-import 'package:smart_library/screens/user/register_user.dart';
-
-class BeaconTag {
-  String major;
-  String minor;
-  String name;
-
-  BeaconTag(this.major, this.minor, this.name);
-
-  @override
-  String toString() {
-    return '{ ${this.major}, ${this.minor}, ${this.name} }';
-  }
-}
+import 'package:smart_library/screens/book/book_list1.dart';
+import 'package:smart_library/screens/book/book_list2.dart';
+import 'package:smart_library/services/db_query.dart';
+import 'package:flutter_spinkit/flutter_spinkit.dart';
 
 class BeaconWidget extends StatefulWidget {
+  BeaconWidget({this.uid});
+
+  final String uid;
+
   @override
   _BeaconWidgetState createState() => _BeaconWidgetState();
 }
@@ -36,12 +30,6 @@ class _BeaconWidgetState extends State<BeaconWidget>
   bool authorizationStatusOk = false;
   bool locationServiceEnabled = false;
   bool bluetoothEnabled = false;
-
-  final List<BeaconTag> _beaconTags = <BeaconTag>[
-    BeaconTag('1000', '1', 'Level 1'),
-    BeaconTag('1000', '2', 'Level 2'),
-    BeaconTag('1000', '3', 'Level 3'),
-  ];
 
   @override
   void initState() {
@@ -111,7 +99,6 @@ class _BeaconWidgetState extends State<BeaconWidget>
     final regions = <Region>[
       Region(
         identifier: 'alieyah',
-        proximityUUID: 'b9407f30-f5f8-466e-aff9-25556b57fe6a',
       ),
     ];
 
@@ -194,130 +181,152 @@ class _BeaconWidgetState extends State<BeaconWidget>
   }
 
   Widget build(BuildContext context) {
-    return Scaffold(
-      backgroundColor: Colors.deepPurple[100],
-      appBar: AppBar(
-        title: Text('Book Menu'),
-        centerTitle: true,
-      ),
-      body: Center(
-        child: Column(
-          children: <Widget>[
-            Row(
-              children: <Widget>[
-                StreamBuilder<BluetoothState>(
-                  builder: (context, snapshot) {
-                    if (snapshot.hasData) {
-                      final state = snapshot.data;
+    return FutureBuilder(
+        future: DBQuery().beaconList(widget.uid),
+        builder: (context, snapshot) {
+          List<Beacons> _beaconList = snapshot.data;
+          if (snapshot.hasError || !snapshot.hasData) {
+            return Container(
+              color: Colors.white,
+              child: SpinKitRing(
+                color: Colors.deepOrange,
+              ),
+            );
+          } else {
+            return Scaffold(
+              backgroundColor: Colors.deepPurple[100],
+              appBar: AppBar(
+                title: Text('Book Menu'),
+                centerTitle: true,
+              ),
+              body: Center(
+                child: Column(
+                  children: <Widget>[
+                    Row(
+                      children: <Widget>[
+                        StreamBuilder<BluetoothState>(
+                          builder: (context, snapshot) {
+                            if (snapshot.hasData) {
+                              final state = snapshot.data;
 
-                      if (state == BluetoothState.stateOn) {
-                        return IconButton(
-                          icon: Icon(Icons.bluetooth_connected),
-                          onPressed: () {},
-                          color: Colors.lightBlueAccent,
-                        );
-                      }
-
-                      if (state == BluetoothState.stateOff) {
-                        return IconButton(
-                          icon: Icon(Icons.bluetooth),
-                          onPressed: () async {
-                            if (Platform.isAndroid) {
-                              try {
-                                await flutterBeacon.openBluetoothSettings;
-                              } on PlatformException catch (e) {
-                                print(e);
+                              if (state == BluetoothState.stateOn) {
+                                return IconButton(
+                                  icon: Icon(Icons.bluetooth_connected),
+                                  onPressed: () {},
+                                  color: Colors.lightBlueAccent,
+                                );
                               }
-                            } else if (Platform.isIOS) {}
+
+                              if (state == BluetoothState.stateOff) {
+                                return IconButton(
+                                  icon: Icon(Icons.bluetooth),
+                                  onPressed: () async {
+                                    if (Platform.isAndroid) {
+                                      try {
+                                        await flutterBeacon
+                                            .openBluetoothSettings;
+                                      } on PlatformException catch (e) {
+                                        print(e);
+                                      }
+                                    } else if (Platform.isIOS) {}
+                                  },
+                                  color: Colors.red,
+                                );
+                              }
+
+                              return IconButton(
+                                icon: Icon(Icons.bluetooth_disabled),
+                                onPressed: () {},
+                                color: Colors.grey,
+                              );
+                            }
+
+                            return SizedBox.shrink();
                           },
-                          color: Colors.red,
-                        );
-                      }
-
-                      return IconButton(
-                        icon: Icon(Icons.bluetooth_disabled),
-                        onPressed: () {},
-                        color: Colors.grey,
-                      );
-                    }
-
-                    return SizedBox.shrink();
-                  },
-                  stream: streamController.stream,
-                  //myStreamController.stream.asBroadcastStream().listen(onData);
-                  initialData: BluetoothState.stateUnknown,
-                ),
-              ],
-            ),
-            _beacons == null || _beacons.isEmpty
-                ? Center(child: CircularProgressIndicator())
-                : Expanded(
-                    child: ListView(
-                      children: ListTile.divideTiles(
-                          context: context,
-                          tiles: _beacons.map((beacon) {
-                            BeaconTag _beaconTag = _beaconTags
-                                .where((b) =>
-                                    b.major.contains(beacon.major.toString()))
-                                .where((b) =>
-                                    b.minor.contains(beacon.minor.toString()))
-                                .first;
-                            return GestureDetector(
-                              child: Card(
-                                  child: Row(
-                                children: <Widget>[
-                                  Padding(
-                                    padding: const EdgeInsets.all(8.0),
-                                    child: Column(
-                                      crossAxisAlignment:
-                                          CrossAxisAlignment.center,
-                                      children: <Widget>[
-                                        Text(
-                                          '${beacon.accuracy}',
-                                          style: TextStyle(
-                                            fontSize: 80.0,
-                                            color: Colors.deepPurple,
-                                          ),
-                                        ),
-                                        Text('Meter')
-                                      ],
-                                    ),
-                                  ),
-                                  Text(
-                                    _beaconTag.name,
-                                    style: TextStyle(fontSize: 30.0),
-                                  )
-                                ],
-                              )),
-                              onTap: () {
-                                String x = _beaconTag.name;
-                                if (x == 'Level 1') {
-                                  Navigator.push(
-                                    context,
-                                    MaterialPageRoute(
-                                        builder: (context) => Login()),
-                                  );
-                                } else if (x == 'Level 2') {
-                                  Navigator.push(
-                                    context,
-                                    MaterialPageRoute(
-                                        builder: (context) => RegisterUser()),
-                                  );
-                                } else if (x == 'Level 3') {
-                                  Navigator.push(
-                                    context,
-                                    MaterialPageRoute(
-                                        builder: (context) => ForgotPassword()),
-                                  );
-                                }
-                              },
-                            );
-                          })).toList(),
+                          stream: streamController.stream,
+                          //myStreamController.stream.asBroadcastStream().listen(onData);
+                          initialData: BluetoothState.stateUnknown,
+                        ),
+                      ],
                     ),
-                  )
-          ],
-        ),
-      ),
-    );
+                    _beacons == null || _beacons.isEmpty
+                        ? Center(child: CircularProgressIndicator())
+                        : Expanded(
+                            child: ListView(
+                              children: ListTile.divideTiles(
+                                  context: context,
+                                  tiles: _beacons.map((beacon) {
+                                    // DBQuery().beaconList(widget.uid)
+                                    //BeaconTag _beaconTag = _beaconTags
+                                    Beacons _beaconLists = _beaconList
+                                        .where((b) => b.major
+                                            .contains(beacon.major.toString()))
+                                        .where((b) => b.minor
+                                            .contains(beacon.minor.toString()))
+                                        .first;
+                                    return GestureDetector(
+                                      child: Card(
+                                          child: Row(
+                                        children: <Widget>[
+                                          Padding(
+                                            padding: const EdgeInsets.all(8.0),
+                                            child: Column(
+                                              crossAxisAlignment:
+                                                  CrossAxisAlignment.center,
+                                              children: <Widget>[
+                                                Text(
+                                                  '${beacon.accuracy}',
+                                                  style: TextStyle(
+                                                    fontSize: 80.0,
+                                                    color: Colors.deepPurple,
+                                                  ),
+                                                ),
+                                                Text('Meter')
+                                              ],
+                                            ),
+                                          ),
+                                          Text(
+                                            _beaconLists.name,
+                                            style: TextStyle(fontSize: 30.0),
+                                          )
+                                        ],
+                                      )),
+                                      onTap: () {
+                                        String x = _beaconLists.beaconId;
+                                        if (x ==
+                                            'b9407f30-f5f8-466e-aff9-25556b57fe6a') {
+                                          Navigator.push(
+                                            context,
+                                            MaterialPageRoute(
+                                                builder: (context) =>
+                                                    BookList()),
+                                          );
+                                        } else if (x ==
+                                            'b9407f30-f5f8-466e-aff9-25556b57fe6b') {
+                                          Navigator.push(
+                                            context,
+                                            MaterialPageRoute(
+                                                builder: (context) =>
+                                                    BookList2()),
+                                          );
+                                        } else if (x == 'Level 3') {
+                                          Navigator.push(
+                                            context,
+                                            MaterialPageRoute(
+                                                builder: (context) =>
+                                                    ForgotPassword()),
+                                          );
+                                        }
+                                      },
+                                    );
+                                  })).toList(),
+                            ),
+                          )
+                  ],
+                ),
+              ),
+            );
+          }
+        });
   }
 }

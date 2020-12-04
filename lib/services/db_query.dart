@@ -105,7 +105,7 @@ class DBQuery {
   }
 
   //Get All Books Data from Snapshot
-  Future<List<Beacons>> beaconList(String id) async {
+  Future<List<Beacons>> beaconList(String uid) async {
     try {
       final QuerySnapshot snapshot = await _beaconsCollection.get();
 
