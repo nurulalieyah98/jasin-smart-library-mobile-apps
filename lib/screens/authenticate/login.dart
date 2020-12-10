@@ -120,11 +120,19 @@ class _LoginState extends State<Login> {
                             // if (result == null) {
                             //   error = 'Wrong Email/Password';
                             // }
-                            if (result == null) {
-                              setState(() {
-                                error = 'Wrong email/password';
-                              });
-                            }
+                            //       if (result == null) {
+                            //         setState(() {
+                            //           error = 'Wrong email/password';
+                            //         });
+                            //       }
+                            //     }
+                            //   },
+                            // ),
+                            setState(() {
+                              if (result == null) {
+                                error = 'Wrong Email or Password';
+                              }
+                            });
                           }
                         },
                       ),

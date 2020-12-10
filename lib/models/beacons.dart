@@ -6,4 +6,7 @@ class Beacons {
   final String name;
 
   Beacons({this.uid, this.beaconId, this.major, this.minor, this.name});
+  String toString() {
+    return '{ ${this.uid},${this.beaconId},${this.major}, ${this.minor}, ${this.name} }';
+  }
 }

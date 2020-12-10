@@ -80,13 +80,20 @@ class _ForgotPasswordState extends State<ForgotPassword> {
                       //   error = "Success! Please check your email";
                       // }
 
-                      if (result == null) {
-                        setState(() {
+                      // if (result == null) {
+                      //   setState(() {
+                      //     error = 'Success! Please check your email';
+                      //   });
+                      // } else {
+                      //   error = 'Wrong Email';
+                      // }
+                      setState(() {
+                        if (result == null) {
                           error = 'Success! Please check your email';
-                        });
-                      } else {
-                        error = 'Wrong Email';
-                      }
+                        } else {
+                          error = 'Wrong Email';
+                        }
+                      });
                     }
                   },
                 ),

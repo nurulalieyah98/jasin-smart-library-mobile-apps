@@ -112,7 +112,8 @@ class DBQuery {
       return snapshot.docs
           .map(
             (e) => Beacons(
-                uid: e.id,
+                uid: uid,
+                // proximityUUID: e.get('proximityUUID') ?? '',
                 beaconId: e.get('beaconId') ?? '',
                 major: e.get('major') ?? '',
                 minor: e.get('minor') ?? '',

@@ -147,14 +147,6 @@ class _BeaconWidgetState extends State<BeaconWidget>
       compare = a.accuracy.compareTo(b.accuracy);
     }
 
-    if (compare == 0) {
-      compare = a.major.compareTo(b.major);
-    }
-
-    if (compare == 0) {
-      compare = a.minor.compareTo(b.minor);
-    }
-
 //    if (compare == 0) {
 //      compare = a.accuracy.compareTo(b.accuracy);
 //    }
