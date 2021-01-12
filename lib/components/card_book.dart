@@ -38,14 +38,14 @@ class CardBook extends StatelessWidget {
                       textAlign: TextAlign.center,
                       style: TextStyle(
                           color: Colors.black,
-                          fontSize: 14.0,
+                          fontSize: 13.0,
                           fontWeight: FontWeight.bold),
                     ),
                     SizedBox(height: 10.0),
                     Text(
                       author,
                       textAlign: TextAlign.center,
-                      style: TextStyle(color: Colors.pink, fontSize: 14.0),
+                      style: TextStyle(color: Colors.pink, fontSize: 12.0),
                     ),
                     // SizedBox(height: 10.0),
                     // Text('Synopsis ' + synopsis),

@@ -6,7 +6,7 @@ import 'package:flutter/services.dart';
 import 'package:flutter_beacon/flutter_beacon.dart';
 import 'package:smart_library/screens/authenticate/forgot_password.dart';
 import 'package:smart_library/screens/authenticate/login.dart';
-import 'package:smart_library/screens/user/register_user.dart';
+import 'package:smart_library/screens/authenticate/register.dart';
 
 class BeaconTag {
   String major;

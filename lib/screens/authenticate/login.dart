@@ -1,6 +1,6 @@
 import 'package:smart_library/models/users.dart';
 import 'package:smart_library/screens/authenticate/forgot_password.dart';
-import 'package:smart_library/screens/user/register_user.dart';
+import 'package:smart_library/screens/authenticate/register.dart';
 import 'package:smart_library/services/auth.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
@@ -146,11 +146,11 @@ class _LoginState extends State<Login> {
                         text: TextSpan(
                           children: [
                             TextSpan(
-                                text: 'Forgot Password ?',
+                                text: 'Forgot Password?',
                                 style: TextStyle(
                                   fontWeight: FontWeight.bold,
-                                  decoration: TextDecoration.underline,
-                                  color: Colors.black,
+                                  // decoration: TextDecoration.underline,
+                                  color: Colors.blueGrey[800],
                                 ),
                                 recognizer: TapGestureRecognizer()
                                   ..onTap = () {

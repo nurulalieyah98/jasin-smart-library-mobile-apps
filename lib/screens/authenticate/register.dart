@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:smart_library/components/rounded_button.dart';
-import 'package:smart_library/screens/wrapper.dart';
+import 'package:smart_library/wrapper.dart';
 import 'package:smart_library/services/auth.dart';
 import 'package:smart_library/shared/constants.dart';
 

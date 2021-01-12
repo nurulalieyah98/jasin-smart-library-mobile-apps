@@ -1,3 +1,4 @@
+import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:smart_library/components/card_profile.dart';
 import 'package:smart_library/models/users.dart';
 import 'package:smart_library/screens/profile/edit_profile.dart';
@@ -18,35 +19,6 @@ class _UserProfileState extends State<UserProfile> {
 
   @override
   Widget build(BuildContext context) {
-    // void _showSettingsPanel(Widget widget) {
-    //   showModalBottomSheet(
-    //     context: context,
-    //     builder: (context) {
-    //       return Container(
-    //         padding: EdgeInsets.symmetric(
-    //           vertical: 20.0,
-    //           horizontal: 60.0,
-    //         ),
-    //         height: 200.0,
-    //         child: widget,
-    //       );
-    //     },
-    //   );
-    // }
-
-    // Future<DateTime> _selectDate(BuildContext context) async {
-    //   final DateTime picked = await showDatePicker(
-    //     context: context,
-    //     initialDate: now,
-    //     firstDate: DateTime(1950),
-    //     lastDate: DateTime(2025),
-    //   );
-    //   if (picked != null && picked != now) {
-    //     now = picked;
-    //   }
-    //   return now;
-    // }
-
     return StreamBuilder<Users>(
       stream: DatabaseService(uid: widget.uid).userData,
       builder: (context, snapshot) {
@@ -159,8 +131,8 @@ class _UserProfileState extends State<UserProfile> {
             ),
           );
         } else {
-          return Scaffold(
-            body: Text(widget.uid),
+          return SpinKitRing(
+            color: Colors.deepPurple,
           );
         }
       },

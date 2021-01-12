@@ -26,7 +26,7 @@ class _BookDetailState extends State<BookDetail> {
           return Container(
             color: Colors.white,
             child: SpinKitRing(
-              color: Colors.deepOrange,
+              color: Colors.deepPurple,
             ),
           );
         } else {

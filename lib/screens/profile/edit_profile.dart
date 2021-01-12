@@ -1,3 +1,4 @@
+import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:smart_library/components/rounded_button.dart';
 import 'package:smart_library/models/users.dart';
 import 'package:smart_library/services/database.dart';
@@ -73,7 +74,9 @@ class EditProfile extends StatelessWidget {
               ),
             );
           } else {
-            return Scaffold();
+            return SpinKitRing(
+              color: Colors.deepPurple,
+            );
           }
         });
   }

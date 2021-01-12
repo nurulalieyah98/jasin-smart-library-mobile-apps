@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:smart_library/models/users.dart';
-import 'package:smart_library/screens/wrapper.dart';
+import 'package:smart_library/wrapper.dart';
 import 'package:smart_library/services/auth.dart';
 import 'package:firebase_core/firebase_core.dart';
 

@@ -1,6 +1,6 @@
 import 'package:smart_library/models/users.dart';
-import 'package:smart_library/screens/home/scan_me.dart';
-import 'package:smart_library/screens/home/search.dart';
+import 'package:smart_library/screens/book/scan_me.dart';
+import 'package:smart_library/screens/home/search3.dart';
 import 'package:smart_library/screens/profile/profile_menu.dart';
 import 'package:smart_library/services/auth.dart';
 import 'package:smart_library/services/database.dart';
@@ -133,7 +133,8 @@ class Home extends StatelessWidget {
                                     Navigator.push(
                                       context,
                                       MaterialPageRoute(
-                                        builder: (context) => SearchBook(),
+                                        // builder: (context) => SearchBook(),
+                                        builder: (context) => Search(),
                                       ),
                                     );
                                   },

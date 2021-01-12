@@ -4,7 +4,7 @@ import 'package:flutter_bluetooth_serial/flutter_bluetooth_serial.dart';
 import 'package:permission_handler/permission_handler.dart';
 //import 'package:smart_library/screens/home/beacon2.dart';
 // import 'package:smart_library/screens/home/beacon.dart';
-import 'package:smart_library/screens/home/beacon3.dart';
+import 'package:smart_library/screens/book/beacon3.dart';
 
 class ScanMe extends StatelessWidget {
   @override
@@ -100,6 +100,7 @@ class _MyHomePageState extends State<MyHomePage> {
         //   style: TextStyle(
         //       color: Colors.black, fontSize: 15.0, fontWeight: FontWeight.bold),
         // ),
+
         Text(
           "WARNING !!",
           style: TextStyle(
@@ -107,6 +108,11 @@ class _MyHomePageState extends State<MyHomePage> {
         ),
         Text(
           "Turn On Bluetooth First Before Scan\n",
+          style: TextStyle(
+              color: Colors.black, fontSize: 15.0, fontWeight: FontWeight.bold),
+        ),
+        Text(
+          "Scanning Nearby Beacons in Main Lobby\n",
           style: TextStyle(
               color: Colors.black, fontSize: 15.0, fontWeight: FontWeight.bold),
         ),

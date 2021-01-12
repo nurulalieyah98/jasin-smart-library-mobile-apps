@@ -37,40 +37,6 @@ class ProfileMenu extends StatelessWidget {
               );
             },
           ),
-          // CardProfile(
-          //   title: 'My Address',
-          //   data: '',
-          //   onPressed: () {
-          //     Navigator.push(
-          //       context,
-          //       MaterialPageRoute(
-          //         builder: (context) => UserAddress(
-          //           uid: uid,
-          //         ),
-          //       ),
-          //     );
-          //   },
-          // ),
-          // SizedBox(
-          //   height: 15.0,
-          // ),
-          // Text('My Recipe\'s Rating'),
-          // SizedBox(
-          //   height: 15.0,
-          // ),
-          // CardProfile(
-          //   title: 'Review Recipe',
-          //   data: '',
-          //   onPressed: () {
-          //     Navigator.push(
-          //       context,
-          //       MaterialPageRoute(builder: (context) => UserProfile(uid: uid)),
-          //     );
-          //   },
-          // ),
-          // SizedBox(
-          //   height: 15.0,
-          // ),
           Text('Settings'),
           SizedBox(
             height: 15.0,

@@ -9,6 +9,9 @@ class DatabaseService {
   final CollectionReference usersCollection =
       FirebaseFirestore.instance.collection('users');
 
+  final CollectionReference booksCollection =
+      FirebaseFirestore.instance.collection('users');
+
   final CollectionReference booksRef = FirebaseFirestore.instance
       .collection('beacons')
       .doc('b9407f30-f5f8-466e-aff9-25556b57fe6a')

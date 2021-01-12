@@ -202,7 +202,7 @@ class _BeaconWidgetState extends State<BeaconWidget>
             return Container(
               color: Colors.white,
               child: SpinKitRing(
-                color: Colors.deepOrange,
+                color: Colors.deepPurple,
               ),
             );
           } else {
