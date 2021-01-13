@@ -90,29 +90,25 @@ class _MyHomePageState extends State<MyHomePage> {
     return Column(
       mainAxisAlignment: MainAxisAlignment.center,
       children: <Widget>[
-        // Text(
-        //   "Want to know what books are on the 1st floor?",
-        //   style: TextStyle(
-        //       color: Colors.grey, fontSize: 15.0, fontWeight: FontWeight.bold),
-        // ),
-        // Text(
-        //   "",
-        //   style: TextStyle(
-        //       color: Colors.black, fontSize: 15.0, fontWeight: FontWeight.bold),
-        // ),
-
         Text(
           "WARNING !!",
           style: TextStyle(
               color: Colors.red, fontSize: 15.0, fontWeight: FontWeight.bold),
         ),
         Text(
-          "Turn On Bluetooth First Before Scan\n",
+          "\nTurn On Bluetooth First Before Scan\n",
           style: TextStyle(
               color: Colors.black, fontSize: 15.0, fontWeight: FontWeight.bold),
         ),
+        Column(mainAxisAlignment: MainAxisAlignment.center, children: <Widget>[
+          Image.asset(
+            'assets/scan beacon.gif',
+            height: 300,
+            width: 500,
+          ),
+        ]),
         Text(
-          "Scanning Nearby Beacons in Main Lobby\n",
+          "\nScanning Nearby Beacons in Main Lobby\n",
           style: TextStyle(
               color: Colors.black, fontSize: 15.0, fontWeight: FontWeight.bold),
         ),
@@ -133,42 +129,3 @@ class _MyHomePageState extends State<MyHomePage> {
     );
   }
 }
-
-// class SwitchToggle extends StatefulWidget {
-//   @override
-//   _SwitchToggleState createState() => _SwitchToggleState();
-// }
-
-// class _SwitchToggleState extends State<SwitchToggle> {
-//   bool isSwitched = false;
-
-//   @override
-//   Widget build(BuildContext context) {
-//     return Column(
-//       mainAxisAlignment: MainAxisAlignment.center,
-//       children: <Widget>[
-//         CustomSwitch(
-//           value: isSwitched,
-//           activeColor: Colors.deepPurple,
-//           onChanged: (value) {
-//             print("Value : $value");
-//             setState(() {
-//               isSwitched = value;
-//               Navigator.push(
-//                 context,
-//                 MaterialPageRoute(builder: (context) => MyHomePage()),
-//               );
-//             });
-//           },
-//         ),
-//         SizedBox(
-//           height: 15.0,
-//         ),
-//         Text(
-//           "Turn On Bluetooth",
-//           style: TextStyle(color: Colors.red, fontSize: 20.0),
-//         )
-//       ],
-//     );
-//   }
-// }
