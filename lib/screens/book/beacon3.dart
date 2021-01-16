@@ -30,12 +30,6 @@ class _BeaconWidgetState extends State<BeaconWidget>
   bool locationServiceEnabled = false;
   bool bluetoothEnabled = false;
 
-  // final List<BeaconTag> _beaconTags = <BeaconTag>[
-  //   BeaconTag('1000', '1', 'Level 1'),
-  //   BeaconTag('1000', '2', 'Level 2'),
-  //   BeaconTag('1000', '3', 'Level 3'),
-  // ];
-
   @override
   void initState() {
     WidgetsBinding.instance.addObserver(this);
@@ -271,7 +265,7 @@ class _BeaconWidgetState extends State<BeaconWidget>
                                   tiles: _beacons.map((beacon) {
                                     // BeaconTag _beaconTag = _beaconTags
                                     Beacons _beaconLists = _beaconList
-                                        // .where((b) => b.beaconId.contains(
+                                        // .where((b) => b.proximityUUID.contains(
                                         //     beacon.proximityUUID.toString()))
                                         .where((b) => b.major
                                             .contains(beacon.major.toString()))
@@ -300,37 +294,43 @@ class _BeaconWidgetState extends State<BeaconWidget>
                                             ),
                                           ),
                                           Text(
-                                            _beaconLists.name,
+                                            _beaconLists.beaconName,
                                             style: TextStyle(fontSize: 30.0),
                                           )
                                         ],
                                       )),
                                       onTap: () {
-                                        String x = _beaconLists.beaconId;
-                                        if (x ==
-                                            'b9407f30-f5f8-466e-aff9-25556b57fe6a') {
+                                        String x = _beaconLists.beaconName;
+                                        if (x == 'Level 1') {
                                           Navigator.push(
                                             context,
                                             MaterialPageRoute(
                                                 builder: (context) =>
                                                     BookList()),
                                           );
-                                        } else if (x ==
-                                            'b9407f30-f5f8-466e-aff9-25556b57fe6b') {
+                                        } else if (x == 'Level 2') {
                                           Navigator.push(
                                             context,
                                             MaterialPageRoute(
                                                 builder: (context) =>
                                                     BookList2()),
                                           );
-                                        } else if (x == 'Level 3') {
-                                          Navigator.push(
-                                            context,
-                                            MaterialPageRoute(
-                                                builder: (context) =>
-                                                    ForgotPassword()),
+                                        } else {
+                                          return Container(
+                                            color: Colors.white,
+                                            child: SpinKitRing(
+                                              color: Colors.deepPurple,
+                                            ),
                                           );
                                         }
+                                        // else if (x == 'Level 3') {
+                                        //   Navigator.push(
+                                        //     context,
+                                        //     MaterialPageRoute(
+                                        //         builder: (context) =>
+                                        //             ForgotPassword()),
+                                        //   );
+                                        // }
                                       },
                                     );
                                   })).toList(),

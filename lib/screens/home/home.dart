@@ -1,7 +1,9 @@
+import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:smart_library/models/users.dart';
 import 'package:smart_library/screens/book/scan_me.dart';
+import 'package:smart_library/screens/borrows/carts.dart';
 import 'package:smart_library/screens/home/search3.dart';
-import 'package:smart_library/screens/profile/profile_menu.dart';
+import 'package:smart_library/screens/profile/user_profile.dart';
 import 'package:smart_library/services/auth.dart';
 import 'package:smart_library/services/database.dart';
 import 'package:flutter/material.dart';
@@ -23,7 +25,7 @@ class Home extends StatelessWidget {
               backgroundColor: Colors.deepPurple[100],
               appBar: AppBar(
                 backgroundColor: Colors.deepPurple,
-                title: Text(user.name),
+                title: Text('${user.name}'),
                 centerTitle: true,
                 leading: IconButton(
                   icon: Image.asset(
@@ -50,6 +52,18 @@ class Home extends StatelessWidget {
                   //   color: Colors.white,
                   //   onPressed: () async {
                   //     await _auth.signOut();
+                  //   },
+                  // ),
+                  // IconButton(
+                  //   icon: Icon(Icons.shopping_cart),
+                  //   color: Colors.white,
+                  //   onPressed: () async {
+                  //     Navigator.push(
+                  //       context,
+                  //       MaterialPageRoute(
+                  //         builder: (context) => Cart(uid: uid),
+                  //       ),
+                  //     );
                   //   },
                   // ),
                 ],
@@ -178,7 +192,7 @@ class Home extends StatelessWidget {
                                       context,
                                       MaterialPageRoute(
                                         builder: (context) =>
-                                            ProfileMenu(uid: uid),
+                                            UserProfile(uid: uid),
                                       ),
                                     );
                                   },
@@ -257,7 +271,10 @@ class Home extends StatelessWidget {
               )));
         } else {
           return Container(
-            child: Text(uid),
+            color: Colors.white,
+            child: SpinKitRing(
+              color: Colors.deepPurple,
+            ),
           );
         }
       },

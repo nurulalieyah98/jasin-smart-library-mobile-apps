@@ -3,10 +3,10 @@ class Beacons {
   final String beaconId;
   final String major;
   final String minor;
-  final String name;
+  final String beaconName;
 
-  Beacons({this.uid, this.beaconId, this.major, this.minor, this.name});
+  Beacons({this.uid, this.beaconId, this.major, this.minor, this.beaconName});
   String toString() {
-    return '{ ${this.uid},${this.beaconId},${this.major}, ${this.minor}, ${this.name} }';
+    return '{ ${this.uid},${this.beaconId},${this.major}, ${this.minor}, ${this.beaconName} }';
   }
 }

@@ -58,7 +58,7 @@ class DBQuery {
   Future bookLevel1(String uid) async {
     try {
       QuerySnapshot snapshot = await _booksCollection
-          .where('beaconId', isEqualTo: 'b9407f30-f5f8-466e-aff9-25556b57fe6a')
+          .where('beaconName', isEqualTo: 'Level 1')
           .get();
 
       return snapshot.docs
@@ -83,7 +83,7 @@ class DBQuery {
   Future bookLevel2(String uid) async {
     try {
       QuerySnapshot snapshot = await _booksCollection
-          .where('beaconId', isEqualTo: 'b9407f30-f5f8-466e-aff9-25556b57fe6b')
+          .where('beaconName', isEqualTo: 'Level 2')
           .get();
 
       return snapshot.docs
@@ -113,11 +113,10 @@ class DBQuery {
           .map(
             (e) => Beacons(
                 uid: uid,
-                // proximityUUID: e.get('proximityUUID') ?? '',
                 beaconId: e.get('beaconId') ?? '',
                 major: e.get('major') ?? '',
                 minor: e.get('minor') ?? '',
-                name: e.get('name') ?? ''),
+                beaconName: e.get('beaconName') ?? ''),
           )
           .toList();
     } catch (e) {
