@@ -2,8 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter/painting.dart';
 import 'package:flutter_bluetooth_serial/flutter_bluetooth_serial.dart';
 import 'package:permission_handler/permission_handler.dart';
-//import 'package:smart_library/screens/home/beacon2.dart';
-// import 'package:smart_library/screens/home/beacon.dart';
 import 'package:smart_library/screens/book/beacon3.dart';
 
 class ScanMe extends StatelessWidget {
@@ -31,7 +29,6 @@ class _MyHomePageState extends State<MyHomePage> {
   final PermissionHandler permissionHandler = PermissionHandler();
   @override
   void initState() {
-    // TODO: implement initState
     super.initState();
     currentIndex = 0;
 

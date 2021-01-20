@@ -13,7 +13,9 @@ class DataController extends GetxController {
   Future queryData(String queryString) async {
     return FirebaseFirestore.instance
         .collection('books')
-        .where('title', isGreaterThan: queryString)
+        .orderBy('title')
+        .where('title', isGreaterThanOrEqualTo: queryString)
+        .where('title', isLessThanOrEqualTo: queryString + '\uf8ff')
         .get();
   }
 }

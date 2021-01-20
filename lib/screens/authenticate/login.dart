@@ -116,18 +116,6 @@ class _LoginState extends State<Login> {
                             dynamic result =
                                 await _auth.signInWithEmailAndPassword(
                                     email.trim(), password);
-
-                            // if (result == null) {
-                            //   error = 'Wrong Email/Password';
-                            // }
-                            //       if (result == null) {
-                            //         setState(() {
-                            //           error = 'Wrong email/password';
-                            //         });
-                            //       }
-                            //     }
-                            //   },
-                            // ),
                             setState(() {
                               if (result == null) {
                                 error = 'Wrong Email or Password';

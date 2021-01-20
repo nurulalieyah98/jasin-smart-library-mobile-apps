@@ -33,10 +33,14 @@ class _RegisterUserState extends State<RegisterUser> {
                   child: Column(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: <Widget>[
+                      Image.asset('assets/logobaru4.png'),
                       Text(
                         'Register',
                         style: TextStyle(
-                          fontSize: 30.0,
+                          fontSize: 18.0,
+                          height: 2.0,
+                          color: Colors.black,
+                          fontWeight: FontWeight.bold,
                         ),
                       ),
                       SizedBox(
@@ -86,7 +90,7 @@ class _RegisterUserState extends State<RegisterUser> {
                       TextFormField(
                         textAlign: TextAlign.center,
                         validator: (val) =>
-                            val.length < 10 ? 'Enter a phone number' : null,
+                            val.length < 10 ? 'Enter 10-11 digit number' : null,
                         onChanged: (value) {
                           phone = value;
                         },

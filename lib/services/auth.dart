@@ -20,33 +20,6 @@ class AuthService {
     return _auth.currentUser.uid;
   }
 
-  // Stream<String> get onAuthStateChanged => _auth.onAuthStateChanged.map(
-  //       (User user) => user?.uid,
-  //     );
-
-  // //get uid
-  // Future<String> getCurrentUID() async {
-  //   return (await _auth.currentUser()).uid;
-  // }
-
-  // //get current user
-  // Future getCurrentUser() async {
-  //   FirebaseUser user = await _auth.currentUser();
-  //   return user != null ? user.uid : null;
-  // }
-
-  // //sign in anon
-  // Future signInAnon() async {
-  //   try {
-  //     AuthResult result = await _auth.signInAnonymously();
-  //     FirebaseUser user = result.user;
-  //     return _userFromFirebaseUser(user);
-  //   } catch (e) {
-  //     print(e.toString());
-  //     return null;
-  //   }
-  // }
-
   //sign in with email & password
   Future signInWithEmailAndPassword(String email, String password) async {
     try {
@@ -96,19 +69,4 @@ class AuthService {
       return null;
     }
   }
-
-  // Future deleteUser(String email, String password)
-  // async {
-  //   try {
-  //     UserCredential result = await _auth.instance.currentUser;
-  //     User user = result.user;
-  //     await DatabaseService(uid: user.uid)
-  //         .userInfo(user.email, id, name, phone);
-  //     return _userFromFirebase(user);
-  //   } catch (e) {
-  //     print(e);
-  //     return null;
-  //   }
-  // }
-
 }

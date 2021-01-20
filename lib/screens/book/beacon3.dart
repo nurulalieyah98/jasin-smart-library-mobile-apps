@@ -6,7 +6,6 @@ import 'package:flutter/services.dart';
 import 'package:flutter_beacon/flutter_beacon.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:smart_library/models/beacons.dart';
-import 'package:smart_library/screens/authenticate/forgot_password.dart';
 import 'package:smart_library/screens/book/book_list1.dart';
 import 'package:smart_library/screens/book/book_list2.dart';
 import 'package:smart_library/services/db_query.dart';

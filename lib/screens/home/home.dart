@@ -1,9 +1,8 @@
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:smart_library/models/users.dart';
 import 'package:smart_library/screens/book/scan_me.dart';
-import 'package:smart_library/screens/borrows/carts.dart';
-import 'package:smart_library/screens/home/search3.dart';
 import 'package:smart_library/screens/profile/user_profile.dart';
+import 'package:smart_library/screens/search/search.dart';
 import 'package:smart_library/services/auth.dart';
 import 'package:smart_library/services/database.dart';
 import 'package:flutter/material.dart';

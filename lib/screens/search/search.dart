@@ -18,33 +18,34 @@ class _SearchState extends State<Search> {
       return ListView.builder(
         itemCount: snapshotData.docs.length,
         itemBuilder: (BuildContext context, int index) {
-          return GestureDetector(
-            // onTap: () {
-            //   Get.to(DetailedScreen(),
-            //       transition: Transition.downToUp,
-            //       arguments: snapshotData.docs[index]);
-            // },
-            child: ListTile(
-              leading: CircleAvatar(
-                backgroundImage:
-                    NetworkImage(snapshotData.docs[index].data()['url']),
-              ),
-              title: Text(
-                snapshotData.docs[index].data()['title'],
-                style: TextStyle(
-                    color: Colors.black,
-                    fontWeight: FontWeight.bold,
-                    fontSize: 15.0),
-              ),
-              subtitle: Text(
-                snapshotData.docs[index].data()['author'],
-                style: TextStyle(
-                    color: Colors.black,
-                    fontWeight: FontWeight.bold,
-                    fontSize: 11.0),
-              ),
-            ),
-          );
+          return Padding(
+              padding: EdgeInsets.only(top: 2.0),
+              child: Card(
+                margin: EdgeInsets.fromLTRB(10.0, 8.0, 10.0, 0),
+                child: ListTile(
+                  leading: CircleAvatar(
+                    radius: 25.0,
+                    backgroundImage:
+                        NetworkImage(snapshotData.docs[index].data()['url']),
+                  ),
+                  title: Text(
+                    snapshotData.docs[index].data()['title'],
+                    style: TextStyle(
+                        color: Colors.black,
+                        fontWeight: FontWeight.bold,
+                        fontSize: 13.0),
+                  ),
+                  subtitle: Text(
+                    snapshotData.docs[index].data()['author'] +
+                        '\n' +
+                        snapshotData.docs[index].data()['shelves'],
+                    style: TextStyle(
+                        color: Colors.black,
+                        // fontWeight: FontWeight.bold,
+                        fontSize: 12.0),
+                  ),
+                ),
+              ));
         },
       );
     }
@@ -89,8 +90,12 @@ class _SearchState extends State<Search> {
           ? searchedData()
           : Container(
               child: Center(
-                child: Text('Search any book',
-                    style: TextStyle(color: Colors.deepPurple, fontSize: 30.0)),
+                child: Text(
+                    'Tips: only the first word can find & \nthe first alphabet must be capitalized. \nNext, press the search button!',
+                    style: TextStyle(
+                        color: Colors.deepPurple,
+                        fontSize: 20.0,
+                        fontWeight: FontWeight.bold)),
               ),
             ),
     );

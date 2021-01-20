@@ -13,29 +13,6 @@ class DBQuery {
   final CollectionReference _beaconsCollection =
       FirebaseFirestore.instance.collection('beacon');
 
-  // //Get All Books Data from Snapshot
-  // Future<List<Books>> booksList(String uid) async {
-  //   try {
-  //     final QuerySnapshot snapshot = await _booksCollection.get();
-
-  //     return snapshot.docs
-  //         .map(
-  //           (e) => Books(
-  //             uid: uid,
-  //             title: e.get('title') ?? '',
-  //             author: e.get('author') ?? '',
-  //             category: e.get('category') ?? '',
-  //             synopsis: e.get('synopsis') ?? '',
-  //             url: e.get('url') ?? '',
-  //             shelves: e.get('shelves') ?? '',
-  //           ),
-  //         )
-  //         .toList();
-  //   } catch (e) {
-  //     print(e.toString());
-  //   }
-  // }
-
   //Get One Book Data from Snapshot
   Future bookDetail(uid) async {
     try {
