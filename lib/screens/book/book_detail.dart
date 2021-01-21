@@ -96,6 +96,21 @@ class _BookDetailState extends State<BookDetail> {
                               top: MediaQuery.of(context).size.height / 50,
                             ),
                             child: Text(
+                              'Beacon Name : ' +
+                                  _bookDetail.beaconName.toString(),
+                              style: TextStyle(
+                                fontWeight: FontWeight.w700,
+                                fontSize: 14.0,
+                              ),
+                            ),
+                          ),
+                          Padding(
+                            padding: EdgeInsets.only(
+                              left: MediaQuery.of(context).size.width / 20,
+                              right: MediaQuery.of(context).size.width / 20,
+                              top: MediaQuery.of(context).size.height / 50,
+                            ),
+                            child: Text(
                               'Category : ' + _bookDetail.category.toString(),
                               style: TextStyle(
                                 fontWeight: FontWeight.w700,

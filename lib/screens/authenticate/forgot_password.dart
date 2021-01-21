@@ -89,7 +89,8 @@ class _ForgotPasswordState extends State<ForgotPassword> {
                       // }
                       setState(() {
                         if (result == null) {
-                          error = 'Success! Please check your email';
+                          error =
+                              'Only registered accounts will receive an email to reset the password';
                         } else {
                           error = 'Wrong Email';
                         }

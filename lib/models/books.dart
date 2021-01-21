@@ -1,7 +1,7 @@
 class Books {
   final String uid;
   final String author;
-  final String beaconId;
+  final String beaconName;
   final String category;
   final String shelves;
   final String synopsis;
@@ -11,7 +11,7 @@ class Books {
   Books(
       {this.uid,
       this.author,
-      this.beaconId,
+      this.beaconName,
       this.category,
       this.shelves,
       this.synopsis,
