@@ -43,19 +43,22 @@ class _MyHomePageState extends State<MyHomePage> {
   }
 
   Future<void> enableBluetooth() async {
+    //check current bluetooth
     // Retrieving the current Bluetooth state
     _bluetoothState = await FlutterBluetoothSerial.instance.state;
 
     // If the bluetooth is off, then turn it on first
     // and then retrieve the devices that are paired.
     if (_bluetoothState == BluetoothState.STATE_OFF) {
-      await FlutterBluetoothSerial.instance.requestEnable();
+      await FlutterBluetoothSerial.instance
+          .requestEnable(); //request to enable the bluetooth
       return true;
     } else {}
     return false;
   }
 
   ///1
+  //Request permission to turn on bluetooth
   Future<bool> _requestPermission(PermissionGroup permission) async {
     final PermissionHandler _permissionHandler = PermissionHandler();
     var result = await _permissionHandler.requestPermissions([permission]);

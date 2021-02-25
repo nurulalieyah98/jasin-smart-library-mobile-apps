@@ -2,7 +2,7 @@ import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:smart_library/models/users.dart';
 import 'package:smart_library/screens/book/scan_me.dart';
 import 'package:smart_library/screens/profile/user_profile.dart';
-import 'package:smart_library/screens/search/search.dart';
+import 'package:smart_library/screens/search/search2.dart';
 import 'package:smart_library/services/auth.dart';
 import 'package:smart_library/services/database.dart';
 import 'package:flutter/material.dart';
@@ -98,6 +98,10 @@ class Home extends StatelessWidget {
                               width: 160.0,
                               height: 160.0,
                               child: Card(
+                                color: Color.fromARGB(255, 21, 21, 21),
+                                elevation: 2.0,
+                                shape: RoundedRectangleBorder(
+                                    borderRadius: BorderRadius.circular(8.0)),
                                 child: new RaisedButton(
                                   onPressed: () async {
                                     Navigator.push(
@@ -119,7 +123,7 @@ class Home extends StatelessWidget {
                                       children: <Widget>[
                                         Image.asset(
                                           "assets/book.png",
-                                          width: 64.0,
+                                          width: 70.0,
                                         ),
                                         SizedBox(
                                           height: 10.0,
@@ -141,13 +145,17 @@ class Home extends StatelessWidget {
                               width: 160.0,
                               height: 160.0,
                               child: Card(
+                                color: Color.fromARGB(255, 21, 21, 21),
+                                elevation: 2.0,
+                                shape: RoundedRectangleBorder(
+                                    borderRadius: BorderRadius.circular(8.0)),
                                 child: new RaisedButton(
                                   onPressed: () async {
                                     Navigator.push(
                                       context,
                                       MaterialPageRoute(
                                         // builder: (context) => SearchBook(),
-                                        builder: (context) => Search(),
+                                        builder: (context) => SearchPage(),
                                       ),
                                     );
                                   },
@@ -163,7 +171,7 @@ class Home extends StatelessWidget {
                                       children: <Widget>[
                                         Image.asset(
                                           "assets/search.png",
-                                          width: 64.0,
+                                          width: 70.0,
                                         ),
                                         SizedBox(
                                           height: 10.0,
@@ -185,6 +193,10 @@ class Home extends StatelessWidget {
                               width: 160.0,
                               height: 160.0,
                               child: Card(
+                                color: Color.fromARGB(255, 21, 21, 21),
+                                elevation: 2.0,
+                                shape: RoundedRectangleBorder(
+                                    borderRadius: BorderRadius.circular(8.0)),
                                 child: new RaisedButton(
                                   onPressed: () async {
                                     Navigator.push(
@@ -206,7 +218,7 @@ class Home extends StatelessWidget {
                                       children: <Widget>[
                                         Image.asset(
                                           "assets/profile.png",
-                                          width: 64.0,
+                                          width: 75.0,
                                         ),
                                         SizedBox(
                                           height: 10.0,
@@ -228,6 +240,10 @@ class Home extends StatelessWidget {
                               width: 160.0,
                               height: 160.0,
                               child: Card(
+                                color: Color.fromARGB(255, 21, 21, 21),
+                                elevation: 2.0,
+                                shape: RoundedRectangleBorder(
+                                    borderRadius: BorderRadius.circular(8.0)),
                                 child: new RaisedButton(
                                   onPressed: () async {
                                     await _auth.signOut();
@@ -243,7 +259,7 @@ class Home extends StatelessWidget {
                                       children: <Widget>[
                                         Image.asset(
                                           "assets/logout.png",
-                                          width: 64.0,
+                                          width: 70.0,
                                         ),
                                         SizedBox(
                                           height: 10.0,

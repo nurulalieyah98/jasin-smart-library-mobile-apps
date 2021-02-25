@@ -50,21 +50,25 @@ class _BeaconWidgetState extends State<BeaconWidget>
     _streamBluetooth = flutterBeacon
         .bluetoothStateChanged()
         .listen((BluetoothState state) async {
-      print('BluetoothState = $state');
+      print('BluetoothState = $state'); //check state bluetooth on or not
 
       streamController.add(state);
 
       switch (state) {
-        case BluetoothState.stateOn:
+        case BluetoothState
+            .stateOn: //if state on the will scan the function beacon
           initScanBeacon();
           break;
-        case BluetoothState.stateOff:
+        case BluetoothState
+            .stateOff: //if state off the will pause scan beacon then check all the requirement
           await pauseScanBeacon();
           await checkAllRequirements();
           break;
       }
     });
   }
+
+  //check requirement is on or off / okay or not
 
   checkAllRequirements() async {
     final bluetoothState = await flutterBeacon.bluetoothState;
@@ -83,6 +87,7 @@ class _BeaconWidgetState extends State<BeaconWidget>
     });
   }
 
+  //if bluetooth on, this function will check to scan the beacon
   initScanBeacon() async {
     await flutterBeacon.initializeScanning;
     await checkAllRequirements();
@@ -94,6 +99,8 @@ class _BeaconWidgetState extends State<BeaconWidget>
           'bluetoothEnabled=$bluetoothEnabled');
       return;
     }
+
+    // region beacon
     final regions = <Region>[
       Region(
         identifier: 'alieyah',
@@ -116,9 +123,11 @@ class _BeaconWidgetState extends State<BeaconWidget>
           _regionBeacons[result.region] = result.beacons;
           _beacons.clear();
           _regionBeacons.values.forEach((list) {
-            _beacons.addAll(list);
+            _beacons
+                .addAll(list); //all the data beacon in db will add in this list
           });
-          _beacons.sort(_compareParameters);
+          _beacons.sort(
+              _compareParameters); //compare parameter data in db n beacon device
         });
       }
     });
@@ -133,6 +142,7 @@ class _BeaconWidgetState extends State<BeaconWidget>
     }
   }
 
+  //compare all the beacon's data in database same as in beacon device or not
   int _compareParameters(Beacon a, Beacon b) {
     int compare = a.proximityUUID.compareTo(b.proximityUUID);
 

@@ -48,12 +48,14 @@ class _RegisterUserState extends State<RegisterUser> {
                       ),
                       TextFormField(
                         textAlign: TextAlign.center,
-                        validator: (val) => val.isEmpty ? 'Enter ID' : null,
+                        keyboardType: TextInputType.number,
+                        validator: (val) =>
+                            val.isEmpty ? 'Enter Matric ID in Digit' : null,
                         onChanged: (value) {
                           id = value;
                         },
                         decoration: textInputDecoration.copyWith(
-                          hintText: 'Enter your ID',
+                          hintText: 'Enter your Matric ID',
                         ),
                       ),
                       SizedBox(
@@ -74,6 +76,7 @@ class _RegisterUserState extends State<RegisterUser> {
                         height: 8.0,
                       ),
                       TextFormField(
+                        keyboardType: TextInputType.emailAddress,
                         textAlign: TextAlign.center,
                         validator: (val) =>
                             val.length < 6 ? 'Enter an email' : null,
@@ -88,6 +91,7 @@ class _RegisterUserState extends State<RegisterUser> {
                         height: 10.0,
                       ),
                       TextFormField(
+                        keyboardType: TextInputType.phone,
                         textAlign: TextAlign.center,
                         validator: (val) =>
                             val.length < 10 ? 'Enter 10-11 digit number' : null,

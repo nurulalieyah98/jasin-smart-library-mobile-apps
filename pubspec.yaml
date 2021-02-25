@@ -41,6 +41,9 @@ dependencies:
   provider: ^4.3.2+2
   intl: ^0.16.1
   get: ^3.13.2
+  flutter_search_bar: ^2.1.0
+  basic_utils: ^2.6.3
+  recase: ^3.0.1
 
 dev_dependencies:
   flutter_test:
